@@ -4,6 +4,10 @@
 #include <string>
 
 inline std::vector<std::string_view> split(std::string_view string, char token) {
+	
+	if (string.empty())
+		return {};
+	
 	std::vector<std::string_view> tokens;
 
 	size_t offset = 0;
@@ -12,7 +16,8 @@ inline std::vector<std::string_view> split(std::string_view string, char token) 
 	do {
 		nextOffset = string.find(token, offset);
 		if (nextOffset == std::string_view::npos) {
-			tokens.emplace_back(string.data() + offset);
+			if (offset < string.size() - 1)
+				tokens.emplace_back(string.data() + offset);			
 		}
 		else if (nextOffset - offset > 1) {
 			tokens.emplace_back(string.data() + offset, nextOffset - offset);
