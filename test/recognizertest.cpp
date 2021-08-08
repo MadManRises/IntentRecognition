@@ -53,3 +53,15 @@ TEST(RecognizerTest, Miscellanious) {
 	);
 }
 
+TEST(RecognizerTest, Variations) {
+	using Intents = std::vector<std::string>;
+
+	ASSERT_EQ(
+		recognizeIntents("What is the humidity like today in Paris?"),
+		Intents({ "Get", "Humidity", "City" })
+	);
+	ASSERT_EQ(
+		recognizeIntents("Tell me a joke."),
+		Intents({ "Get", "Joke" })
+	);
+}
