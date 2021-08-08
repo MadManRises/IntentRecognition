@@ -8,3 +8,5 @@ add_executable(IntentRecognizer main.cpp)
 
 target_link_libraries(IntentRecognizer PRIVATE IntentRecognizerImpl)
 
+
+add_subdirectory(test)
